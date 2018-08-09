@@ -1,0 +1,27 @@
+.dashbord {
+    margin-top: .5%;
+    width: 80%;
+    background-color: #fff;
+    height: 550px;
+}
+
+.titulo {
+    text-align: center;
+    color: #065463;
+    margin-top: 2%;
+    font-size: 50px;
+    text-align: center;
+}
+
+.estilo {
+    align-items: center;
+    margin-top: 2%;
+    width: 33.3%;
+    height: 8px;
+    background-color: tomato;
+    margin-left: 33.3%;
+}
+
+.icones{
+    width: 90px;
+}
