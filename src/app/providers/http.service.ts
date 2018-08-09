@@ -1,3 +1,4 @@
+import { Match } from './../models/match-model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,9 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class HttpService {
 
+  match: Match = new Match();
+
   constructor() { }
 
   soma(num:number){
-    console.log(num);
+    this.match.points = num;
   }
 }

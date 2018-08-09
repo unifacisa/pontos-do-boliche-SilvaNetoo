@@ -5,6 +5,14 @@
         <h2 class="titulo">Pontos do Boliche</h2>
       </div>
     </div>
+
+    <div class="row" *ngIf="service.match.points">
+      <div class="col">
+        <h3>
+          {{ service.match.points }}
+        </h3>
+      </div>
+    </div>
   
     <div class="row text-center">
       <div class="col-sm-12">
