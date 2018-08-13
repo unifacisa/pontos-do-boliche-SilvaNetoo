@@ -1,8 +1,7 @@
-import { element } from 'protractor';
-import { HttpService } from './../../providers/http.service';
-import { Match } from './../../models/match-model';
-import { Pin } from './../../models/pin-model';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Pin } from './../../models/pin-model';
+import { HttpService } from './../../providers/http.service';
 
 @Component({
   selector: 'app-match',
@@ -11,32 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchComponent implements OnInit {
 
-  match: Match = new Match();
+  user: FormGroup;
 
-  constructor(public service: HttpService) { }
+  constructor(private formBuilder: FormBuilder, public service: HttpService) { }
 
   ngOnInit() {
-    this.match.fallenPins = new Array<Pin>();
-    this.add();
-  }
-
-  add() {
-    this.match.fallenPins.push(new Pin());
-  }
-
-  remove(i: number) {
-    this.match[i] = null;
-    this.match.fallenPins.splice(i, 1);
+    this.user = this.formBuilder.group({
+      point: [null]
+    })
   }
 
   onSubmit() {
-    let counting:number = 0;
-    this.match.fallenPins.forEach(element => {
-      counting += element.firstPointPlayed + element.secondPointPlayed;
-    });
-    this.service.soma(counting);
-    this.match.fallenPins = new Array<Pin>();
-    this.ngOnInit()
+    this.service.soma(this.user.value.point);
   }
 
 }
