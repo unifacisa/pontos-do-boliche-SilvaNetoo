@@ -11,7 +11,9 @@ import { HttpService } from './../../providers/http.service';
 export class MatchComponent implements OnInit {
 
   user: FormGroup;
-
+  array: Array<number> = new Array<number>();
+  tabela: Array<number> = new Array<number>();
+  
   constructor(private formBuilder: FormBuilder, public service: HttpService) { }
 
   ngOnInit() {
@@ -21,7 +23,10 @@ export class MatchComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.soma(this.user.value.point);
+    this.array.push(this.user.value.point);
+    this.service.soma(this.array);
+
+    this.tabela.push(this.service.somatorio);
   }
 
 }
