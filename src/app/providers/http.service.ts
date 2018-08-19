@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class HttpService {
   
   somatorio: number = 0;
+  rodada: number = 0;
 
   constructor() { }
   
@@ -24,15 +25,17 @@ export class HttpService {
         console.log('spare');
         valorTotal += num[i+2];
       }
-
+      this.rodada = num.length; 
       valorTotal += num[i];
     }
 
-    this.calcT(valorTotal);
+    this.calcT(valorTotal, this.rodada);
+    return valorTotal;
   }
   
-  calcT(num: number):number{
+  calcT(num: number, rodada?: number):number{
     this.somatorio = num;
+    this.rodada = rodada;
     return this.somatorio;
   }
 

@@ -10,6 +10,9 @@
       <div class="col-md-12">
         <h3>
           Total de pontos: {{ service.somatorio }}
+          <hr>
+          Rodada atual: {{ service.rodada }}
+          <hr>
         </h3>
       </div>
     </div>
@@ -17,27 +20,49 @@
     
     <form class="form" [formGroup]="user">
           
-                    
-          <div class="form-group col-md-6">
-            <label for="point">Pontos:</label>
-            <input type="number" class="form-control" id="point" formControlName="point">
-          </div>
-
+      <div class="form-group col-md-12">
+        <label for="point">Pontos:</label>
+        <input type="number" class="form-control" id="point" formControlName="point" style="background: linear-gradient(#f1f1f1, #ffffff); box-shadow: 0px 2px 12px grey;">
+      </div>
       
-        <div class="row">
-
-          <div class="btn-group btn-group-toggle">
-            <button (click)="onSubmit()" type="submit" class="btn btn-primary">finalizar jogada</button>
-          </div>
+      <div class="d-flex justify-content-center">
+        <button (click)="onSubmit()" type="submit" class="btn btn-primary">finalizar jogada</button>
+      </div>
       
-        </div>
-
     </form>
 
-    <div *ngFor="let items of tabela">
-      {{ items }}
+    <!-- <div *ngFor="let items of tabela">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="d-flex flex-row">
+            <div class="p-2">
+              {{ items }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-hover table-dark" style="margin-top: 20px">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">valor da Jogada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let items of tabela, let i = index;">
+              <th scope="row"> {{ i + 1 }} </th>
+              <td>{{ items }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
+        
   </section>
 
 
