@@ -25,7 +25,6 @@ export class MatchComponent implements OnInit {
   onSubmit() {
     this.array.push(this.user.value.point);
     this.service.soma(this.array);
-
     this.tabela.push(this.service.somatorio);
   }
 

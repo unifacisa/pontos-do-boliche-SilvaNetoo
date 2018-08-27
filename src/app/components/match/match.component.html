@@ -55,7 +55,7 @@
           <tbody>
             <tr *ngFor="let items of tabela, let i = index;">
               <th scope="row"> {{ i + 1 }} </th>
-              <td>{{ items }}</td>
+              <td *ngIf="items != 'NaN'">{{ items }}</td>
             </tr>
           </tbody>
         </table>
