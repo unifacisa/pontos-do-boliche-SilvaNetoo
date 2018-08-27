@@ -9,6 +9,7 @@ import { ComponentsModule } from './components/components.module';
 
 //Components
 import { AppComponent } from './app.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AppComponent } from './app.component';
     ComponentsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
