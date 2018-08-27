@@ -12,12 +12,12 @@ var app = express();
  
 app.set('port', (process.env.PORT || 5000));
  
-app.use(express.static(path.join(__dirname, 'dist/bowling/')));
+app.use(express.static(path.join(__dirname, './dist/bowling/')));
  
 // redireciona todas as requições para o Angular 2 
 app.all('*', function(req, res) {
   res.status(200).sendFile(
-  	path.join(__dirname, 'dist/bowling/', 'index.html'));
+  	path.join(__dirname, './dist/bowling/', 'index.html'));
 });
  
 app.listen(app.get('port'), function() {
