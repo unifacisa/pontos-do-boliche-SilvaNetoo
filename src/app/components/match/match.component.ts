@@ -13,10 +13,12 @@ export class MatchComponent implements OnInit {
   user: FormGroup;
   array: Array<number> = new Array<number>();
   tabela: Array<number> = new Array<number>();
+  saveValue;
   
   constructor(private formBuilder: FormBuilder, public service: HttpService) { }
 
   ngOnInit() {
+    this.service.save = JSON.parse(this.service.getSaveValue());
     this.user = this.formBuilder.group({
       point: [null]
     })
@@ -26,6 +28,7 @@ export class MatchComponent implements OnInit {
     this.array.push(this.user.value.point);
     this.service.soma(this.array);
     this.tabela.push(this.service.somatorio);
+    this.saveValue = this.service.getSaveValue();
   }
 
 }

@@ -7,6 +7,7 @@ export class HttpService {
   
   somatorio: number = 0;
   rodada: number = 0;
+  save: number = 0;
 
   constructor() { }
   
@@ -36,7 +37,19 @@ export class HttpService {
   calcT(num: number, rodada?: number):number{
     this.somatorio = num;
     this.rodada = rodada;
+    this.saveValue();
     return this.somatorio;
+  }
+
+  saveValue(){
+    if(this.save < this.somatorio){
+      this.save = this.somatorio;
+      localStorage.setItem('value', this.somatorio.toString());
+    }
+  }
+
+  getSaveValue(){
+    return localStorage.getItem('value');
   }
 
 }
